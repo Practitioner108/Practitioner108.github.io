@@ -1,0 +1,4 @@
+baseURL = 'https://Practitioner108.github.io/'
+languageCode = 'zh-cn'
+title = '涂智超的机械臂学习与开发记录'
+theme = 'PaperMod'

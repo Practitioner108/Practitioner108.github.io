@@ -4,7 +4,7 @@ title = "涂智超的机械臂学习与开发记录"
 theme = "PaperMod"
 
 [params]
-  defaultTheme = "auto" 
+  defaultTheme = "auto"
   relativeURLs = true
 
 [params.profileMode]
@@ -24,7 +24,8 @@ theme = "PaperMod"
     url = "https://github.com/Practitioner108"
 
 [params.assets]
-  disableHLJS = true            # 保持关闭，不让 PaperMod 捣乱
+  # 🔥 关键点 1：关掉主题自带的 JS 高亮，完全交给你刚才写的 CSS 控制
+  disableHLJS = true
   disableFingerprinting = true
 
 [markup]
@@ -33,14 +34,10 @@ theme = "PaperMod"
       unsafe = true
 
   [markup.highlight]
-    # 🔥 核心修改：改回 true！
-    # 意思是：“Hugo 你自己把颜色直接写在 HTML 里(inline)，别指望外部 CSS 了”
-    noClasses = true  
-    
-    # 🔥 核心修改：指定样式为 dombedos 或者 github
-    # github 样式在深色模式下可能会强制变黑，推荐用 "manni" 或 "pastie" 这种浅色底的
-    style = "manni"  
+    # 🔥 关键点 2：必须为 false，这样 Hugo 才会生成 CSS 类，你的 custom.css 才能生效
+    noClasses = false
     
     codeFences = true
     guessSyntax = true
     lineNos = true
+    style = "github" # 这里的 style 只是备用

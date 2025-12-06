@@ -1,11 +1,44 @@
-/* 强制给代码块加一个浅灰色背景，防止它变黑 */
-.post-content .highlight {
-    background-color: #f0f0f0 !important; /* 浅灰背景 */
-    border-radius: 5px;
-    padding: 5px;
+/* 1. 强制定义 GitHub 风格变量 */
+:root {
+    --code-bg: #f6f8fa !important;       /* 浅灰色背景 */
+    --code-text: #24292e !important;     /* 深黑色文字 */
+    --code-border: #d0d7de !important;   /* 边框颜色 */
 }
 
-/* 强制让文字颜色深一点，防止在深色模式下变成白字看不清 */
-.post-content .highlight code {
-    color: #333 !important; 
+/* 2. 深色模式适配 (防止晚上瞎眼，自动变深色 GitHub 风) */
+.dark {
+    --code-bg: #161b22 !important;
+    --code-text: #c9d1d9 !important;
+    --code-border: #30363d !important;
 }
+
+/* 3. 核心容器样式 - 强制变灰 */
+.post-content .highlight {
+    background-color: var(--code-bg) !important;
+    border-radius: 6px;
+    border: 1px solid var(--code-border);
+    margin-bottom: 1.5rem;
+}
+
+/* 4. 内部 PRE 标签透明化 (透出外面的灰色) */
+.post-content .highlight pre {
+    background-color: transparent !important;
+    padding: 16px !important;
+    margin: 0;
+}
+
+/* 5. 文字颜色修正 */
+.post-content .highlight code {
+    color: var(--code-text) !important;
+    background-color: transparent !important; 
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* 6. 表格行号修复 (防止行号错位或颜色不对) */
+.post-content .highlighttable {
+    background-color: var(--code-bg) !important;
+    border-radius: 6px;
+    border: 1px solid var(--code-border);
+}
+.post-content .highlighttable td { padding: 0 !important; }
+.post-content .highlighttable pre { border: none !important; }

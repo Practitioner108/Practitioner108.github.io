@@ -277,4 +277,4 @@ git push
 - 关键点：在 Branch 选项里，等待 Actions 第一次运行完成后（可能需要几分钟），这里会出现一个 gh-pages 分支。一定要选择 gh-pages 分支，文件夹选 /(root)。
 - 点击 Save。
 
-大功告成，可以写博客了。
+大功告成，可以写博客了。别忘了最后用`git push`把你的成果上传到github里。

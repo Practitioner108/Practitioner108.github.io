@@ -7,3 +7,28 @@ theme = 'PaperMod'
   defaultTheme = "auto" # 跟随系统自动切换深色/浅色模式
   # 强制使用相对路径，防止 CSS 加载失败（解决“像 IP 地址”问题的关键）
   relativeURLs = true
+
+  # --- 下面是“精装修”配置 ---
+
+[params.profileMode]
+  enabled = true
+  title = "Practitioner108" # 你的名字
+  subtitle = "Master's Student in Robotics | Path Planning | Mechanical Arms" # 你的学术身份
+  imageUrl = "https://github.com/Practitioner108.png" # 自动抓取你的 GitHub 头像
+  imageWidth = 120
+  imageHeight = 120
+
+  # 下面是按钮，你可以根据需要改
+  [[params.profileMode.buttons]]
+    name = "我的文章"
+    url = "/posts"
+
+  [[params.profileMode.buttons]]
+    name = "GitHub"
+    url = "https://github.com/Practitioner108"
+
+# 开启数学公式支持（这对你的 RRT 算法博客至关重要）
+[params.assets]
+  disableHLJS = false
+[markup.goldmark.renderer]
+  unsafe = true

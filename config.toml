@@ -2,3 +2,8 @@ baseURL = 'https://Practitioner108.github.io/'
 languageCode = 'zh-cn'
 title = '涂智超的机械臂学习与开发记录'
 theme = 'PaperMod'
+
+[params]
+  defaultTheme = "auto" # 跟随系统自动切换深色/浅色模式
+  # 强制使用相对路径，防止 CSS 加载失败（解决“像 IP 地址”问题的关键）
+  relativeURLs = true

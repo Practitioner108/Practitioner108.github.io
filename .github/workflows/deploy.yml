@@ -1,0 +1,46 @@
+name: Deploy Hugo Site to GitHub Pages
+
+on:
+  # 监听 main 分支，只有当推送到 main 时才触发
+  push:
+    branches:
+      - main
+  # 允许你在 GitHub 网页端手动点击按钮触发（方便调试）
+  workflow_dispatch:
+
+# 设置权限，允许 Actions 修改你的仓库内容（发布网页需要）
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04 # 使用 GitHub 的虚拟机环境（最新版 Ubuntu）
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      # 第一步：把你的源码拉取到虚拟机里
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true  # 重要！PaperMod 主题通常作为子模块存在，必须开启
+          fetch-depth: 0    # 获取完整的 git 历史（有些主题依赖 Git 信息显示文章最后修改时间）
+
+      # 第二步：安装 Hugo Extended 版（和你本地环境一致）
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.110.0' # 锁定为你本地使用的版本，保证兼容性
+          extended: true
+
+      # 第三步：编译（生成 public 文件夹）
+      - name: Build
+        run: hugo --minify
+
+      # 第四步：将 public 文件夹推送到 gh-pages 分支
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public  # 刚才编译生成的目录
+          publish_branch: gh-pages  # 推送到这个专门的分支

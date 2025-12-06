@@ -27,7 +27,7 @@ cd ~/Downloads
 ```
 然后安装下载好的包
 ```bash
-sudo dpkg -i hugo hugo_extended_0.110.0_linux-amd64.deb
+sudo dpkg -i hugo_extended_0.110.0_linux-amd64.deb
 ```
 最后验证一下
 ```bash

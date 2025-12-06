@@ -1,0 +1,54 @@
+/* --- 1. 核心配色：GitHub 风格 --- */
+:root {
+    /* 浅色模式变量 */
+    --code-bg: #f6f8fa !important;      /* GitHub 浅灰背景 */
+    --code-text: #1f2328 !important;    /* GitHub 深黑文字 */
+    --border-color: #d0d7de !important; /* GitHub 边框颜色 */
+}
+
+.dark {
+    /* 深色模式变量 */
+    --code-bg: #0d1117 !important;      /* GitHub Dark 背景 */
+    --code-text: #c9d1d9 !important;    /* GitHub Dark 文字 */
+    --border-color: #30363d !important;
+}
+
+/* --- 2. 代码块容器样式 --- */
+/* 针对 PaperMod 的高亮容器 */
+.post-content .highlight {
+    background-color: var(--code-bg) !important;
+    border-radius: 6px;
+    border: 1px solid var(--border-color); /* 加一个细边框，更有质感 */
+    margin-bottom: 1.5rem; /* 代码块下方的间距 */
+}
+
+/* 针对内部的 pre 标签 */
+.post-content .highlight pre {
+    background-color: transparent !important; /* 让它透明，透出外面的灰色 */
+    padding: 16px !important;
+    margin: 0;
+    overflow-x: auto; /* 超出宽度允许横向滚动 */
+}
+
+/* --- 3. 代码文字样式 --- */
+.post-content .highlight code {
+    color: var(--code-text) !important;
+    background-color: transparent !important;
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace;
+    font-size: 0.9em; /* 稍微调小一点点，更精致 */
+}
+
+/* --- 4. 表格行号修正 (如果你开启了 lineNos) --- */
+/* 这一步是为了防止行号表格出现双重背景色 */
+.post-content .highlighttable {
+    background: var(--code-bg) !important;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+.post-content .highlighttable td {
+    padding: 0 !important;
+}
+.post-content .highlighttable pre {
+    border: none !important; /* 去掉内部边框 */
+    border-radius: 0 !important;
+}

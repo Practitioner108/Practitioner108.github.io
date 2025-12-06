@@ -30,10 +30,8 @@ theme = 'PaperMod'
 # 开启数学公式支持（这对你的 RRT 算法博客至关重要）
 [params.assets]
   disableHLJS = false
-[markup.goldmark.renderer]
-  unsafe = true
 
-  [markup]
+[markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true  # 允许渲染 HTML（之前开启公式时你应该加过这个）
@@ -42,7 +40,6 @@ theme = 'PaperMod'
     codeFences = true
     guessSyntax = true
     lineNos = true       # 如果你想要显示行号，就设为 true
-    noClasses = false    
-    
+    noClasses = false
     # 关键在这里！把默认的样式改成 "github" 或者 "friendly"
     style = "github"

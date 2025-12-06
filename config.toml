@@ -1,24 +1,20 @@
-baseURL = 'https://Practitioner108.github.io/'
-languageCode = 'zh-cn'
-title = '涂智超的机械臂学习与开发记录'
-theme = 'PaperMod'
+baseURL = "https://Practitioner108.github.io/"
+languageCode = "zh-cn"
+title = "涂智超的机械臂学习与开发记录"
+theme = "PaperMod"
 
 [params]
-  defaultTheme = "auto" # 跟随系统自动切换深色/浅色模式
-  # 强制使用相对路径，防止 CSS 加载失败（解决“像 IP 地址”问题的关键）
+  defaultTheme = "auto" 
   relativeURLs = true
-
-  # --- 下面是“精装修”配置 ---
 
 [params.profileMode]
   enabled = true
-  title = "Practitioner108" # 你的名字
-  subtitle = "Master's Student in Robotics | Path Planning | Mechanical Arms" # 你的学术身份
-  imageUrl = "https://github.com/Practitioner108.png" # 自动抓取你的 GitHub 头像
+  title = "Practitioner108"
+  subtitle = "Master's Student in Robotics | Path Planning | Mechanical Arms"
+  imageUrl = "https://github.com/Practitioner108.png"
   imageWidth = 120
   imageHeight = 120
 
-  # 下面是按钮，你可以根据需要改
   [[params.profileMode.buttons]]
     name = "我的文章"
     url = "/posts"
@@ -27,19 +23,24 @@ theme = 'PaperMod'
     name = "GitHub"
     url = "https://github.com/Practitioner108"
 
-# 开启数学公式支持（这对你的 RRT 算法博客至关重要）
 [params.assets]
-  disableHLJS = false
+  disableHLJS = true            # 保持关闭，不让 PaperMod 捣乱
+  disableFingerprinting = true
 
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
-      unsafe = true  # 允许渲染 HTML（之前开启公式时你应该加过这个）
+      unsafe = true
 
   [markup.highlight]
+    # 🔥 核心修改：改回 true！
+    # 意思是：“Hugo 你自己把颜色直接写在 HTML 里(inline)，别指望外部 CSS 了”
+    noClasses = true  
+    
+    # 🔥 核心修改：指定样式为 dombedos 或者 github
+    # github 样式在深色模式下可能会强制变黑，推荐用 "manni" 或 "pastie" 这种浅色底的
+    style = "manni"  
+    
     codeFences = true
     guessSyntax = true
-    lineNos = true       # 如果你想要显示行号，就设为 true
-    noClasses = false
-    # 关键在这里！把默认的样式改成 "github" 或者 "friendly"
-    style = "github"
+    lineNos = true

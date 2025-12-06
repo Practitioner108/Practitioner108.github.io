@@ -4,40 +4,42 @@ title = "涂智超的机械臂学习与开发记录"
 theme = "PaperMod"
 
 [params]
-  defaultTheme = "auto"
-  relativeURLs = true
+  defaultTheme = "auto" # 自动跟随系统（白天浅色，晚上深色）
+  relativeURLs = true   # 必须保留，防止 GitHub Pages 样式加载失败
+  math = true           
 
+# --- 你的个人主页配置 (保留) ---
 [params.profileMode]
   enabled = true
-  title = "Practitioner108"
-  subtitle = "Master's Student in Robotics | Path Planning | Mechanical Arms"
-  imageUrl = "https://github.com/Practitioner108.png"
+  title = "Practitioner108" 
+  subtitle = "Master's Student in Robotics | Path Planning | Mechanical Arms" 
+  imageUrl = "https://github.com/Practitioner108.png" 
+  imageTitle = "My Avatar"
   imageWidth = 120
   imageHeight = 120
 
   [[params.profileMode.buttons]]
-    name = "我的文章"
+    name = "实践记录"
     url = "/posts"
+
+  [[params.profileMode.buttons]]
+    name = "理论学习"
+    url = "/theory"
 
   [[params.profileMode.buttons]]
     name = "GitHub"
     url = "https://github.com/Practitioner108"
 
-[params.assets]
-  # 🔥 关键点 1：关掉主题自带的 JS 高亮，完全交给你刚才写的 CSS 控制
-  disableHLJS = true
-  disableFingerprinting = true
-
+# --- 渲染设置 ---
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
-      unsafe = true
+      # ⚠️ 必须开启，否则公式会被当做普通文本，显示不出来
+      unsafe = true  
 
   [markup.highlight]
-    # 🔥 关键点 2：必须为 false，这样 Hugo 才会生成 CSS 类，你的 custom.css 才能生效
-    noClasses = false
-    
+    # 使用 Hugo 默认的高亮设置，不做任何魔改，保证能看清
     codeFences = true
     guessSyntax = true
     lineNos = true
-    style = "github" # 这里的 style 只是备用
+    style = "monokai" # 这是一个经典的深色代码风格，对比度高，很清晰

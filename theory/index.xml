@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>涂智超的机械臂学习与开发记录</title><link>https://Practitioner108.github.io/</link><description>Recent content on 涂智超的机械臂学习与开发记录</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><atom:link href="https://Practitioner108.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>《机器人学》学习笔记</title><link>https://Practitioner108.github.io/theory/robotics-mechanism/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Practitioner108.github.io/theory/robotics-mechanism/</guid><description>第2章 机器人机构 2.1 运动副概念 运动副又称关节或者铰链，主要分成两种：高副和低副，也可以说是高（压强）副和低（压强）副。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Theories on 涂智超的机械臂学习与开发记录</title><link>https://Practitioner108.github.io/theory/</link><description>Recent content in Theories on 涂智超的机械臂学习与开发记录</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><atom:link href="https://Practitioner108.github.io/theory/index.xml" rel="self" type="application/rss+xml"/><item><title>《机器人学》学习笔记</title><link>https://Practitioner108.github.io/theory/robotics-mechanism/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Practitioner108.github.io/theory/robotics-mechanism/</guid><description>第2章 机器人机构 2.1 运动副概念 运动副又称关节或者铰链，主要分成两种：高副和低副，也可以说是高（压强）副和低（压强）副。
 两个构件通过面接触（接触面积较大）进行运动，就是低副。因为面接触压强小，压力低，承载能力大，容易润滑，磨损小，寿命长。比如一般的机械臂都是这个。 两个构件通过点接触或线接触进行运动，就是高副。常见的比如齿轮，齿与齿之间接触面积很小，所以是高副。
 通过这个不难发现，我们日常见到的所有机器人基本都是低副，但是如果深究其内在，又会发现他们的传动还是以齿轮为主，是高副。所以是很多情况下机器人是“表面低副，实际高副”。在机构学分析 (理论)上，他们是低副，在工程实现 (实际)中，他们是高副。
 实际中的低副也有很多种，放一张图片在下面，权当开开眼界： 事实上，机器人的关节只选用低副，其中最常用的就是旋转副和移动副，也就是上图的(a)和(b)。
@@ -15,15 +15,4 @@ SCARA机器人 这种机器人说白了就是圆柱坐标式机器人的升级�
 Pitch-Roll球型手腕 Roll轴与C固接，可以看到它可以做两个方向的转动。
 三轴垂直相交手腕 如图所示，三个方向都可以转，理论上可以三百六十度无死角，实际上因为前面手臂的限制所以做不到。
 可连续转动手腕 如图所示，三个关节轴虽然相交，但互不垂直（斜切结构）。
-优点：关节角不受结构限制，可以实现 360° 连续转动（适合喷漆、弧焊等不能停顿的作业）。 缺点：存在一个圆锥形的不可达区域（盲区），手腕无法指向该区域。 解决：安装时，刻意让机器人的大臂占据这个盲区位置（反正手本来也不能伸进大臂里），从而避开缺点。 2.</description></item><item><title>博客部署记录</title><link>https://Practitioner108.github.io/posts/hugo_github/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Practitioner108.github.io/posts/hugo_github/</guid><description>从零开始：在Ubuntu20.04上部署个人博客教程（Hugo + GitHub Pages部署实践） 目标 建立一个个人技术博客，用于记录机械臂路径规划学习过程中的工程实践和学术理论。 环境依赖 Ubuntu20.04 LTS Hugo Extended PaperMod主题 VScode 1 基础搭建与Git初始化 1.1 环境准备 1.1.1 安装hugo 首先需要安装hugo，hugo可以看作是一个“转换器”，可以把Markdown文档、模板等素材变成一个完整的静态网页，是一个静态网站生成器。 但是要注意hugo本身的版本要和系统版本相匹配，可以使用
-hugo下载链接 该链接版本与Ubuntu20.04相匹配，可以直接使用。 在下载完毕后进入Downloads文件夹
-1 cd ~/Downloads 然后安装下载好的包
-1 sudo dpkg -i hugo_extended_0.110.0_linux-amd64.deb 最后验证一下
-1 hugo version 如果正常显示版本号就说明成功了
-1.1.2 创建博客“骨架” 首先需要在任意目录下（我是在home下面直接建立）建立：
-1 2 hugo new site my_robotics_blog cd my_robotics_blog 其中my_robotics_blog是自己给自己空间起的名字 然后初始化Git仓库
-1 git init 1.1.3 下载主题 关于主题也要注意，同样要与版本相匹配，如果过新或者过旧都会导致不匹配而无法使用。
-我这里PaperMod主题拿举例
-1 git clone https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod 下载好之后还需要将主题代码回滚到2023年4月1日之前的状态，因为那个时候Hugo v0.110.0 还是主流，肯定能兼容。
-先去到主题的文件夹:
-1 cd ~/github_projects/my_robotics_blog/themes/PaperMod 然后穿越时间:</description></item></channel></rss>
+优点：关节角不受结构限制，可以实现 360° 连续转动（适合喷漆、弧焊等不能停顿的作业）。 缺点：存在一个圆锥形的不可达区域（盲区），手腕无法指向该区域。 解决：安装时，刻意让机器人的大臂占据这个盲区位置（反正手本来也不能伸进大臂里），从而避开缺点。 2.</description></item></channel></rss>

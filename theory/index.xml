@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Theories on 涂智超的机械臂学习与开发记录</title><link>https://Practitioner108.github.io/theory/</link><description>Recent content in Theories on 涂智超的机械臂学习与开发记录</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><atom:link href="https://Practitioner108.github.io/theory/index.xml" rel="self" type="application/rss+xml"/><item><title>《机器人学》学习笔记</title><link>https://Practitioner108.github.io/theory/robotics-mechanism/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://Practitioner108.github.io/theory/robotics-mechanism/</guid><description>第2章 机器人机构 2.1 运动副概念 运动副又称关节或者铰链，主要分成两种：高副和低副，也可以说是高（压强）副和低（压强）副。
 两个构件通过面接触（接触面积较大）进行运动，就是低副。因为面接触压强小，压力低，承载能力大，容易润滑，磨损小，寿命长。比如一般的机械臂都是这个。 两个构件通过点接触或线接触进行运动，就是高副。常见的比如齿轮，齿与齿之间接触面积很小，所以是高副。
 通过这个不难发现，我们日常见到的所有机器人基本都是低副，但是如果深究其内在，又会发现他们的传动还是以齿轮为主，是高副。所以是很多情况下机器人是“表面低副，实际高副”。在机构学分析 (理论)上，他们是低副，在工程实现 (实际)中，他们是高副。
-实际中的低副也有很多种，放一张图片在下面，权当开开眼界： 事实上，机器人的关节只选用低副，其中最常用的就是旋转副和移动副，也就是上图的(a)和(b)。
+实际中的低副也有很多种，放一张图片在下面，权当开开眼界：
+事实上，机器人的关节只选用低副，其中最常用的就是旋转副和移动副，也就是上图的(a)和(b)。
 2.2 串联机器人机构 机器人的运动可以分为两个部分：手臂和手腕。刚体在三维空间中有6个自由度，所以机器人如果想要完成任一空间的作业，就应该满配，也就是需要六个自由度。 其中： $$ \text{串联机器人} = \begin{cases} \text{手臂：} 3 \text{个关节，改变位置} \longrightarrow \text{定位机构 (Positioning Mechanism)} \\ \text{手腕：} 3 \text{个关节，改变姿态} \longrightarrow \text{定向机构 (Orienting Mechanism)} \end{cases} $$
 2.2.1 手臂 首先先讨论位置问题，也就是手臂的问题，目的很简单，把末端执行器送到指定空间点了，只要送到就算成功。
 对于这个问题，首先想到的肯定是仿照数学上的坐标系：直角坐标系、圆柱坐标系、极（球）坐标系。

@@ -13,7 +13,8 @@ math: true
 
 通过这个不难发现，我们日常见到的所有机器人基本都是低副，但是如果深究其内在，又会发现他们的传动还是以齿轮为主，是高副。所以是很多情况下机器人是“表面低副，实际高副”。在机构学分析 (理论)上，他们是低副，在工程实现 (实际)中，他们是高副。
 
-实际中的低副也有很多种，放一张图片在下面，权当开开眼界：
+实际中的低副也有很多种，放一张图片在下面，权当开开眼界：  
+
 ![低运动副示意图](/images/robotics-mechanism/lower-pair.png)
 
 事实上，机器人的关节只选用低副，其中最常用的就是旋转副和移动副，也就是上图的(a)和(b)。
@@ -35,41 +36,57 @@ $$
 首先先讨论位置问题，也就是手臂的问题，目的很简单，把末端执行器送到指定空间点了，只要送到就算成功。
 
 对于这个问题，首先想到的肯定是仿照数学上的坐标系：直角坐标系、圆柱坐标系、极（球）坐标系。
-1. 直角坐标式机器人
+1. 直角坐标式机器人  
+
 ![直角坐标式机器人](/images/robotics-mechanism/cartesian-coordinate-robot.png)
+
 该机器人完全仿照直角坐标系的规则，三个移动副分别对应x、y、z轴。
 
 2. 圆柱坐标式机器人
+
 ![圆柱坐标式机器人](/images/robotics-mechanism/cylindrical-coordinate-robot.png)
+
 圆柱坐标系分三个坐标。想象一个圆柱。首先是z表示上下，r表示圆柱的半径，还有 $\theta$ 代表旋转（如图所示）。
 
 3. 极坐标式机器人
+
 ![极坐标式机器人](/images/robotics-mechanism/polar-coordinate-robot.png)
+
 极坐标比较好理解，就是以一个线为基线，$\theta$ 管左右转, $\phi$ 上下抬，$r$ 表示半径长短。 
 
 除此之外，还有两种比较特殊，但实际上更常见的机器人结构：
-1. SCARA机器人
+1. SCARA机器人  
+
 ![SCARA机器人](/images/robotics-mechanism/SCARA.png)
+
 这种机器人说白了就是圆柱坐标式机器人的升级版，在圆柱坐标式机器人中,$r$是靠移动副，也就是伸缩杆，但是那个其一不好维护，其二太占地方，所以就把这个$r$变成了旋转副，通过像人手臂一样的角度控制来达到一样的效果。
 
-2. 关节式机器人
+2. 关节式机器人  
+
 ![关节式机器人](/images/robotics-mechanism/articulated-robot.png)
+
 这个就是我们最常看见的机械臂，但是实际上它最特殊，因为它没有直接依托任何一种坐标系，而是通过旋转副控制角度来达到目的。一般来说也是有三个关节定位，如图中所示。这种机械臂灵活性非常高，但是缺点就是计算极其复杂。
 
 ---
 
 ### 2.2.2 手腕
 如果说手臂是为了到达某个点，那么手腕就是来控制姿态的，它可以让机器人以更多的姿态到达目标点。
-1. Pitch-Roll球型手腕
-![Pitch-Roll球型手腕](/images/robotics-mechanism/pitch-roll.png)
+1. Pitch-Roll球型手腕  
+
+![Pitch-Roll球型手腕](/images/robotics-mechanism/pitch-roll.png)  
+
 Roll轴与C固接，可以看到它可以做两个方向的转动。
 
-2. 三轴垂直相交手腕
-![三轴垂直相交手腕](/images/robotics-mechanism/three-roll-wrist.png)
+2. 三轴垂直相交手腕  
+
+![三轴垂直相交手腕](/images/robotics-mechanism/three-roll-wrist.png)  
+
 如图所示，三个方向都可以转，理论上可以三百六十度无死角，实际上因为前面手臂的限制所以做不到。
 
-3. 可连续转动手腕
-![可连续转动手腕](/images/robotics-mechanism/continuous-wrist.png)
+3. 可连续转动手腕  
+
+![可连续转动手腕](/images/robotics-mechanism/continuous-wrist.png)  
+
 如图所示，三个关节轴虽然相交，但**互不垂直**（斜切结构）。
 - **优点**：关节角不受结构限制，可以实现 **360° 连续转动**（适合喷漆、弧焊等不能停顿的作业）。
 - **缺点**：存在一个**圆锥形的不可达区域**（盲区），手腕无法指向该区域。

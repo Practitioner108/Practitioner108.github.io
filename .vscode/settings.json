@@ -1,0 +1,12 @@
+{
+    // 注意：整个文件必须被包裹在这一对大括号里 {}
+    // 如果你文件里原本有其他内容，确保 Paste Image 的配置都在大括号内部，且上一个配置行末尾有逗号 ,
+
+    "pasteImage.path": "${projectRoot}/static/images/${currentFileNameWithoutExt}",
+    "pasteImage.basePath": "${projectRoot}/static",
+    "pasteImage.showFilePathConfirm": true,
+    "pasteImage.prefix": "/",
+    "pasteImage.forceUnixStyleSeparator": true
+
+    // 这一对大括号是文件的结束
+}

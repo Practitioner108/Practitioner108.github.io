@@ -1,15 +1,18 @@
-{{- /* Site-level override: include custom CSS to tweak code block and reading styles. */ -}}
-<link rel="stylesheet" href="{{ "css/custom.css" | relURL }}" />
+{{- /* 修复 404 报错：删除了不存在的 custom.css 引用 */ -}}
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+{{- /* 仅在文章 Front Matter 中设置了 math: true 时才加载数学公式引擎 */ -}}
+{{- if .Params.math -}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
     onload="renderMathInElement(document.body, {
         delimiters: [
             {left: '$$', right: '$$', display: true},
             {left: '$', right: '$', display: false},
             {left: '\\(', right: '\\)', display: false},
             {left: '\\[', right: '\\]', display: true}
-        ]
+        ],
+        throwOnError : false
     });">
 </script>
+{{- end -}}

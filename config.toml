@@ -36,6 +36,8 @@ theme = "PaperMod"
     [markup.goldmark.renderer]
       # ⚠️ 必须开启，否则公式会被当做普通文本，显示不出来
       unsafe = true  
+    [markup.goldmark.extensions]
+      passthrough = { enable = true, delimiters = { block = [['$$', '$$']], inline = [['$', '$']] } }
 
   [markup.highlight]
     # 使用 Hugo 默认的高亮设置，不做任何魔改，保证能看清
